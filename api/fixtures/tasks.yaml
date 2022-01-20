@@ -1,0 +1,18 @@
+App\Entity\Task:
+    u1_task1:
+        __construct: ['U1_Task1', '@user1', true, 0, 'User1 task #1 (only today task)', <(new \DateTime())>]
+
+    u1_task2:
+        __construct: ['U1_Task2', '@user1', true, 1, 'User1 task #2 (every day task)', null, true]
+
+    u1_task3:
+        __construct: [ 'U1_Task3', '@user1', true, 2, 'User1 task #3 (every work day task)', null, false, 62]
+
+    u2_task4:
+        __construct: [ 'U1_Task4', '@user1', false, 3, 'User1 task #4 (disabled)', null, true]
+
+    u2_task1:
+        __construct: [ 'U2_Task1', '@user2', true, 0, 'User2 task #1 (only today task)']
+    
+    u2_task2:
+        __construct: [ 'U2_Task2', '@user2', true, 0, 'User2 task #2 (every weekend day task)', null, false, 65]
