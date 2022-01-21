@@ -1,0 +1,9 @@
+App\Entity\TaskHistory:
+    u1_task1_history1:
+        __construct: ['@u1_task1', <(new \DateTimeImmutable())>]
+
+    u1_task2_history1:
+        __construct: ['@u1_task2', <(new \DateTimeImmutable())> ]
+    
+    u2_task1_history1:
+        __construct: ['@u2_task1', <(new \DateTimeImmutable())>]

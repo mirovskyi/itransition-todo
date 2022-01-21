@@ -39,7 +39,17 @@ jobs:
       - name: Create test database
         run: |
           docker-compose exec -T php bin/console -e test doctrine:database:create
-          docker-compose exec -T php bin/console -e test doctrine:migrations:migrate --no-interaction
+          docker-compose exec -T php bin/console -e test doctrine:schema:create --no-interaction
+          docker-compose exec -T php bin/console -e test hautelook:fixtures:load --no-interaction
+      - name: Generate keys for JWT token
+        run: |
+          docker-compose exec -T php sh -c '
+            set -e
+            apk add openssl
+            php bin/console lexik:jwt:generate-keypair
+            setfacl -R -m u:www-data:rX -m u:"$(whoami)":rwX config/jwt
+            setfacl -dR -m u:www-data:rX -m u:"$(whoami)":rwX config/jwt
+          '  
       - name: PHPUnit
         run: docker-compose exec -T php bin/phpunit
       - name: Doctrine Schema Validator
